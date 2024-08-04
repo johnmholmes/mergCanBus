@@ -23,7 +23,7 @@ To clear the memory, press pushbutton1 while reseting the arduino
 #include <MergCBUS.h>
 #include <Message.h>
 #include <EEPROM.h> //required by the library
-#include <VarSpeedServo.h>
+#include <VarSpeedServo.h> //load via zip  file
 
 
 //Module definitions
