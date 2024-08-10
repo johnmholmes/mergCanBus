@@ -28,7 +28,7 @@ To clear the memory, press pushbutton1 while reseting the arduino
 
 //Module definitions
 #define MODULE_ID 110
-#define NUM_SERVOS 6      //number of servos
+#define NUM_SERVOS 2      //number of servos
 //first 2 are to indicate which servo is on. 2 bytes to indicate to togle. 2 for start and end angle
 #define VAR_PER_SERVO 6  //variables per servo
 #define SPEED 50        //servo speed
@@ -38,10 +38,10 @@ To clear the memory, press pushbutton1 while reseting the arduino
 
 
 //CBUS definitions
-#define GREEN_LED A0//8                  //merg green led port
-#define YELLOW_LED 0//7                 //merg yellow led port
-#define PUSH_BUTTON 9                //std merg push button
-#define PUSH_BUTTON1 10               //debug push button
+#define GREEN_LED A0  //8                  //merg green led port
+#define YELLOW_LED A1 //7                 //merg yellow led port
+#define PUSH_BUTTON A2                //std merg push button
+#define PUSH_BUTTON1 A3               //debug push button
 #define NODE_VARS 1                  //number o node variables.Servo speed
 #define NODE_EVENTS 30              //max number of events
 #define EVENTS_VARS VAR_PER_SERVO   //number of variables per event
@@ -59,7 +59,7 @@ VarSpeedServo servos[NUM_SERVOS];
 //pins where the servos are attached
 //pins 9,10 and 15 don't work for many servos. servo library limitation
 //byte servopins[]={2,3,4,5,6,7,8,11,12,13,14,16,17,18,19,20};//,19,20,21,22,23,24,25,26,27,28,29,30};
-byte servopins[]={2,3,4,5,6,7};//,19,20,21,22,23,24,25,26,27,28,29,30};
+byte servopins[]={3,4 };//,19,20,21,22,23,24,25,26,27,28,29,30};
 byte active_servo[2];
 byte togle_servo[2];
 
