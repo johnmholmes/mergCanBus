@@ -36,7 +36,7 @@ struct SENSOR {
 };
 
 struct SENSOR sensors[NUMSENSORS];
-int sensorport[NUMSENSORS]={A8,A9 ,A10 ,A11, A12 ,A13, A14,A15};
+int sensorport[NUMSENSORS]={A0,A1 ,A2 ,A3, A4 ,A5, A6,A7};
 
 
 //first 2 are to indicate which servo is on. 2 bytes to indicate to togle. 2 for start and end angle
@@ -45,8 +45,8 @@ int sensorport[NUMSENSORS]={A8,A9 ,A10 ,A11, A12 ,A13, A14,A15};
 //CBUS definitions
 #define GREEN_LED 27                  //merg green led port
 #define YELLOW_LED 26                 //merg yellow led port
-#define PUSH_BUTTON 25                //std merg push button
-#define PUSH_BUTTON1 28               //debug push button
+#define PUSH_BUTTON 6               //std merg push button
+#define PUSH_BUTTON1 7               //debug push button
 #define NODE_VARS 4                  //2 for togle events, 2 for spare
 #define NODE_EVENTS NUMSENSORS*2     //max number of events in case of teaching short events
 #define EVENTS_VARS VAR_PER_SENSOR   //number of variables per event
@@ -88,7 +88,7 @@ void setup(){
   cbus.setLeds(GREEN_LED,YELLOW_LED);//set the led ports
   cbus.setPushButton(PUSH_BUTTON);//set the push button ports
   cbus.setUserHandlerFunction(&myUserFunc);//function that implements the node logic
-  cbus.initCanBus(53,CAN_125KBPS,10,200);  //initiate the transport layer. pin=53, rate=125Kbps,10 tries,200 millis between each try
+  cbus.initCanBus(10,CAN_125KBPS,10,200);  //initiate the transport layer. pin=53, rate=125Kbps,10 tries,200 millis between each try
 
   //create the servos object
   setupSensors();
