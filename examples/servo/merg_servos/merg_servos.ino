@@ -34,7 +34,7 @@ I have modified this sketch to work on an Arduino Nano for testing on my layout.
 
 //Module definitions
 #define MODULE_ID 110
-#define NUM_SERVOS 6         //number of servos
+#define NUM_SERVOS 2         //number of servos
 
 //first 2 are to indicate which servo is on. 2 bytes to indicate to togle. 2 for start and end angle
 #define VAR_PER_SERVO 6      //variables per servo
@@ -63,7 +63,7 @@ MergCBUS cbus=MergCBUS(NODE_VARS,NODE_EVENTS,EVENTS_VARS,DEVICE_NUMBERS);
 VarSpeedServo servos[NUM_SERVOS];
 
 //pins where the servos are attached
-byte servopins[]={3,4,5,6,7,8};
+byte servopins[]={3,4};
 byte active_servo[2];
 byte togle_servo[2];
 
