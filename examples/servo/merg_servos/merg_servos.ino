@@ -218,5 +218,6 @@ void getServosArray(Message *msg,MergCBUS *mcbus){
   active_servo[1]=mcbus->getEventVar(msg,1);
   togle_servo[0]=mcbus->getEventVar(msg,2);
   togle_servo[1]=mcbus->getEventVar(msg,3);
+  
 }
 
