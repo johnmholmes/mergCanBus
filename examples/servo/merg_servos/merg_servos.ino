@@ -1,15 +1,25 @@
 /*
-This example implements a servo controler.
-It drives 16 servos. Can be more in arduino Mega, but it just an example.
-Each servo has the parameter start,end.
+This example is taken from this repository.
+
+https://github.com/amaurial/mergCanBus
+
+
+It drives 2 servos. 
+Each servo has the parameter start,end position.
+
 Start and end are integers in degrees from 0 to 180. and the velocity from 1 to 255:
-Each event can control the 16 servos, therefore each event has 6 variables. 16 bits to define which servo is activated and 16 bits to define if the
+Each event can control the 2 servos, therefore each event has 6 variables. 16 bits to define which servo is activated and 16 bits to define if the
 servo will togle upon an event. invert the behaviour
-Usim FLIM mode teach on/off events.
+
+Using FLIM mode teach on/off events.
+
 It implements all automatic configuration, including learning events.
+
 It does not handle DCC messages, but you can do it on your user function.
 You can change the ports to fit to your arduino.
+
 This node uses 500 bytes of EPROM to store events and the other information.
+
 See MemoryManagement.h for memory configuration
 To clear the memory, press pushbutton1 while reseting the arduino
 
@@ -18,18 +28,19 @@ To clear the memory, press pushbutton1 while reseting the arduino
 /*
 John Holmes 19/8/2024
 
-I have modified this sketch to work on an Arduino Nano for testing on my layout.
+I have modified this sketch to work on an Arduino Nano for testing on my layout. 
+I only need 2 servos per node.
 
 */
 
 
 #include <Arduino.h>
-#include <SPI.h> //required by the library
+#include <SPI.h>              //required by the library
 #include <TimerOne.h>
 #include <MergCBUS.h>
 #include <Message.h>
-#include <EEPROM.h> //required by the library
-#include <VarSpeedServo.h> //load via zip  file
+#include <EEPROM.h>           //required by the library
+#include <VarSpeedServo.h>    //load via zip  file
 
 
 //Module definitions
@@ -41,7 +52,7 @@ I have modified this sketch to work on an Arduino Nano for testing on my layout.
 #define SPEED 50             //servo speed
 #define SERVO_START 0        //servo start angle
 #define SERVO_END 180        //servo end angle
-#define DEBUG_NODE 1
+#define DEBUG_NODE 1         // Set to use serial monitor now
 
 
 //CBUS definitions
@@ -63,7 +74,7 @@ MergCBUS cbus=MergCBUS(NODE_VARS,NODE_EVENTS,EVENTS_VARS,DEVICE_NUMBERS);
 VarSpeedServo servos[NUM_SERVOS];
 
 //pins where the servos are attached
-byte servopins[]={3,4};
+byte servopins[]={3,4};              // pins 3 and 4 used for the servos
 byte active_servo[2];
 byte togle_servo[2];
 
