@@ -77,29 +77,29 @@ void setup(){
   
 
   //Configuration data for the node
-  cbus.getNodeId()->setNodeName("MODSERV",7);  //node name
-  cbus.getNodeId()->setModuleId(MODULE_ID);            //module number
+  cbus.getNodeId()->setNodeName("MODSERV",7);   //node name
+  cbus.getNodeId()->setModuleId(MODULE_ID);     //module number
   cbus.getNodeId()->setManufacturerId(0xA5);    //merg code
   cbus.getNodeId()->setMinCodeVersion(1);       //Version 1
   cbus.getNodeId()->setMaxCodeVersion(0);
   cbus.getNodeId()->setProducerNode(false);
   cbus.getNodeId()->setConsumerNode(true);
-  cbus.setStdNN(999); //standard node number
+  cbus.setStdNN(999);                           //standard node number
 
   if (digitalRead(PUSH_BUTTON)==LOW){
     #ifdef DEBUG_NODE
       Serial.println(F("Setup new memory"));
-    #endif // DEBUGDEF
+    #endif                                      // DEBUGDEF
     
     cbus.setUpNewMemory();
     cbus.setSlimMode();
     cbus.saveNodeFlags();
   }
-  cbus.setLeds(GREEN_LED,YELLOW_LED);//set the led ports
-  cbus.setPushButton(PUSH_BUTTON);//set the push button ports
-  cbus.setUserHandlerFunction(&myUserFunc);//function that implements the node logic
+  cbus.setLeds(GREEN_LED,YELLOW_LED);           //set the led ports
+  cbus.setPushButton(PUSH_BUTTON);              //set the push button ports
+  cbus.setUserHandlerFunction(&myUserFunc);     //function that implements the node logic
   cbus.initCanBus(10, MCP_8MHz);
-  //cbus.initCanBus(10);  //initiate the transport layer. pin=53, rate=125Kbps,10 tries,200 millis between each try
+  //cbus.initCanBus(10);  //initiate the transport layer. pin=10, rate=125Kbps,10 tries,200 millis between each try
   //create the servos object
   setUpServos();  
   
