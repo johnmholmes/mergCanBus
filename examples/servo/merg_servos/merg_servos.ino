@@ -15,6 +15,12 @@ To clear the memory, press pushbutton1 while reseting the arduino
 
 */
 
+/*
+John Holmes 19/8/2024
+
+I have modified this sketch to work on an Arduino Nano for testing on my layout.
+
+*/
 
 
 #include <Arduino.h>
@@ -28,38 +34,36 @@ To clear the memory, press pushbutton1 while reseting the arduino
 
 //Module definitions
 #define MODULE_ID 110
-#define NUM_SERVOS 2      //number of servos
+#define NUM_SERVOS 6         //number of servos
+
 //first 2 are to indicate which servo is on. 2 bytes to indicate to togle. 2 for start and end angle
-#define VAR_PER_SERVO 6  //variables per servo
-#define SPEED 50        //servo speed
+#define VAR_PER_SERVO 6      //variables per servo
+#define SPEED 50             //servo speed
 #define SERVO_START 0        //servo start angle
 #define SERVO_END 180        //servo end angle
-//#define DEBUG_NODE 1
+#define DEBUG_NODE 1
 
 
 //CBUS definitions
-#define GREEN_LED A0  //8                  //merg green led port
-#define YELLOW_LED A1 //7                 //merg yellow led port
-#define PUSH_BUTTON A2                //std merg push button
-#define PUSH_BUTTON1 A3               //debug push button
-#define NODE_VARS 1                  //number o node variables.Servo speed
+#define GREEN_LED A0                //merg green led port
+#define YELLOW_LED A1               //merg yellow led port
+#define PUSH_BUTTON A2              //std merg push button
+#define PUSH_BUTTON1 A3             //debug push button
+#define NODE_VARS 1                 //number o node variables.Servo speed
 #define NODE_EVENTS 30              //max number of events
 #define EVENTS_VARS VAR_PER_SERVO   //number of variables per event
 #define DEVICE_NUMBERS NUM_SERVOS   //number of device numbers. each servo can be a device
-#define START_ANGLE_VAR 4          //var index for the start angle
-#define END_ANGLE_VAR 5            //var index for the end angle
-
-//arduino mega has 4K, so it is ok.
-
+#define START_ANGLE_VAR 4           //var index for the start angle
+#define END_ANGLE_VAR 5             //var index for the end angle
 
 //create the merg object
 MergCBUS cbus=MergCBUS(NODE_VARS,NODE_EVENTS,EVENTS_VARS,DEVICE_NUMBERS);
+
 //servo controler
 VarSpeedServo servos[NUM_SERVOS];
+
 //pins where the servos are attached
-//pins 9,10 and 15 don't work for many servos. servo library limitation
-//byte servopins[]={2,3,4,5,6,7,8,11,12,13,14,16,17,18,19,20};//,19,20,21,22,23,24,25,26,27,28,29,30};
-byte servopins[]={3,4 };//,19,20,21,22,23,24,25,26,27,28,29,30};
+byte servopins[]={3,4,5,6,7,8};
 byte active_servo[2];
 byte togle_servo[2];
 
