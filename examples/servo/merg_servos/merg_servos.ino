@@ -31,6 +31,12 @@ John Holmes 19/8/2024
 I have modified this sketch to work on an Arduino Nano for testing on my layout. 
 I only need 2 servos per node.
 
+There is an issue with this sketch which is the Speed has been hard coded.
+so changing the node variable has no effect.
+
+Also the taught events are not being saved so the unit has to be re-configured
+every startup.
+
 */
 
 
