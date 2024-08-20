@@ -3,12 +3,6 @@ MergCBus
 
 MergCBUS implementation for Arduino
 
-How to install
+This has been downloaded using the library manager built into the Arduino IDE version 2. 
 
-Download the files as zip into the arduino libraries.
-Unzip the file and rename the directory to mergCBUS.
-When arduino starts the library should be available.
-
-How to use
-
-Take a look in one of the examples or refer to the doxygen pages under doxgen.
+I will use the wiki feature to explain more when I have a working example to share.
